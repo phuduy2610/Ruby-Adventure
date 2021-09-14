@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnLevelFinishedLoading;
     }
     private void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode){
-
+        if(scene.name == "Gameplay"){
+            Instantiate(players[_charIndex]);
+        }
     }
 }
