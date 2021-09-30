@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour
     float timer;
     int direction = 1;
 
+    bool isBroken = true;
     Animator animator;
     
     // Start is called before the first frame update
@@ -24,6 +25,10 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
+        if(!isBroken){
+            return;
+        }
+
         timer -= Time.deltaTime;
 
         if (timer < 0)
@@ -32,12 +37,17 @@ public class EnemyController : MonoBehaviour
             timer = changeTime;
         }
 
+
     }
     
     void FixedUpdate()
     {
+        if(!isBroken){
+            return;
+        }
+
         Vector2 position = rigid_body.position;
-        
+
         if (vertical)
         {
             position.y = position.y + Time.deltaTime * speed * direction;
@@ -51,6 +61,8 @@ public class EnemyController : MonoBehaviour
             animator.SetFloat("Move Y",0);
         }
         
+
+
         rigid_body.MovePosition(position);
     }
 
@@ -59,6 +71,12 @@ public class EnemyController : MonoBehaviour
         if(rubyController != null){
             rubyController.ChangeHealth(-1);
         }
+    }
+
+    public void FixRobot(){
+        isBroken = false;
+        rigid_body.simulated = false;
+        animator.SetTrigger("Fixed");
     }
 }
 

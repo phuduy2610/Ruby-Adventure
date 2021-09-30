@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6167354810494091295}
   - component: {fileID: 6686747564793469010}
   - component: {fileID: 8808641645987299124}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ruby
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 626746581723031676}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.59, y: -1.46, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1003162, y: 1.1966741, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -99,8 +99,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
-  speed: 10
+  speed: 6
   timeInvincible: 2
+  projectilePrefab: {fileID: 2139717630259604212, guid: e6cdd5e45994428459b3a1abc600da4c, type: 3}
 --- !u!50 &6167354810494091295
 Rigidbody2D:
   serializedVersion: 4
