@@ -5378,6 +5378,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ruby
       objectReference: {fileID: 0}
+    - target: {fileID: 6921110524890078945, guid: 66a79ea255a37a246901075fdd8cc888, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6921110524890078945, guid: 66a79ea255a37a246901075fdd8cc888, type: 3}
+      propertyPath: lengthInSec
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6921110524890078945, guid: 66a79ea255a37a246901075fdd8cc888, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66a79ea255a37a246901075fdd8cc888, type: 3}
 --- !u!1001 &4983534827062023141

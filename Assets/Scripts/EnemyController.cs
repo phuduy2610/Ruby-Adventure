@@ -14,6 +14,8 @@ public class EnemyController : MonoBehaviour
 
     bool isBroken = true;
     Animator animator;
+
+    public ParticleSystem smokeEffect;
     
     // Start is called before the first frame update
     void Start()
@@ -77,6 +79,7 @@ public class EnemyController : MonoBehaviour
         isBroken = false;
         rigid_body.simulated = false;
         animator.SetTrigger("Fixed");
+        smokeEffect.Stop();
     }
 }
 
