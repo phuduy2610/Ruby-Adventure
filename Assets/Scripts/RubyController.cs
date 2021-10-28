@@ -31,7 +31,7 @@ public class RubyController : MonoBehaviour
     void Start()
     {
         rigid_body = GetComponent<Rigidbody2D>();
-        _health = 2;
+        _health = maxHealth;
         animator = GetComponent<Animator>();
         Debug.Log(_health);
     }
@@ -82,7 +82,8 @@ public class RubyController : MonoBehaviour
             Instantiate(pickHealthEffect,rigid_body.position + Vector2.up*0.5f,Quaternion.identity);
         }
         _health = Mathf.Clamp(_health + amount,0,maxHealth);
-        Debug.Log(_health + " / " + maxHealth);
+        Debug.Log(_health);
+        UIHealthBar.instance.SetValue(_health/(float)maxHealth);
     }
 
     void Launch(){
