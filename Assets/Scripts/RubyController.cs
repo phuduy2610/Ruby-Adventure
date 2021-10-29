@@ -26,12 +26,17 @@ public class RubyController : MonoBehaviour
 
     public ParticleSystem getHitEffect;
     public ParticleSystem pickHealthEffect;
+
+    private AudioSource audioSource;
+    public AudioClip getHitClip;
+    public AudioClip throwClip;
     // Start is called before the first frame update
     void Start()
     {
         rigid_body = GetComponent<Rigidbody2D>();
         _health = maxHealth;
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         Debug.Log(_health);
     }
 
@@ -87,6 +92,7 @@ public class RubyController : MonoBehaviour
             isInvincible = true;
             invincibleTimer = timeInvincible;
             Instantiate(getHitEffect,rigid_body.position + Vector2.up*0.5f,Quaternion.identity);
+            PlayAudio(getHitClip);
         }
         else if (amount>0){
             Instantiate(pickHealthEffect,rigid_body.position + Vector2.up*0.5f,Quaternion.identity);
@@ -101,5 +107,10 @@ public class RubyController : MonoBehaviour
         Projectile projectile = projectileObject.GetComponent<Projectile>();
         projectile.Launch(lookDirection,300);
         animator.SetTrigger("Launch");
+        PlayAudio(throwClip);
+    }
+
+    public void PlayAudio(AudioClip audioClip){
+        audioSource.PlayOneShot(audioClip);
     }
 }

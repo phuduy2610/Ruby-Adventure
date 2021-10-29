@@ -6,6 +6,8 @@ public class Projectile : MonoBehaviour
 {
     // Start is called before the first frame update
     Rigidbody2D rigid_body;
+    public AudioClip fixedClip;
+    public AudioClip hitClip;
     void Awake()
     {
         rigid_body = GetComponent<Rigidbody2D>();
@@ -30,7 +32,9 @@ public class Projectile : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         EnemyController enemyController = other.collider.GetComponent<EnemyController>();
         if(enemyController!=null){
+        enemyController.PlayAudio(hitClip);
         enemyController.FixRobot();
+        enemyController.PlayAudio(fixedClip);
         }
         Destroy(gameObject);
     }
