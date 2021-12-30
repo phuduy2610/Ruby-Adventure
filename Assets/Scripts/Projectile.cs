@@ -6,7 +6,6 @@ public class Projectile : MonoBehaviour
 {
     // Start is called before the first frame update
     Rigidbody2D rigid_body;
-    public AudioClip fixedClip;
     public AudioClip hitClip;
     private Renderer myRenderer;
     void Awake()
@@ -39,8 +38,11 @@ public class Projectile : MonoBehaviour
         {
             EnemyController enemyController = other.GetComponent<EnemyController>();
             enemyController.PlayAudio(hitClip);
-            enemyController.FixRobot();
-            enemyController.PlayAudio(fixedClip);
+            enemyController.ChangeHp(-1);
+
+        }
+        else if(other.tag =="Collectible"){
+           return; 
         }
         Destroy(gameObject);
 

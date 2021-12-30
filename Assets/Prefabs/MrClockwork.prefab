@@ -147,10 +147,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c3b923d75a0c274ba5b5cbf802016b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHp: 2
   speed: 2
   vertical: 0
   changeTime: 3
   smokeEffect: {fileID: 546953870737029655}
+  fixedClip: {fileID: 8300000, guid: e7fa1971a86d60945bb64585c0ac14d5, type: 3}
 --- !u!95 &3980358640540255178
 Animator:
   serializedVersion: 3

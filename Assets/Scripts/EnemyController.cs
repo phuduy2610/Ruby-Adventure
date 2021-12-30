@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    [SerializeField]
+    private int maxHp = 2;
+    public int hp{get;private set;}
     public float speed;
     public bool vertical;
     public float changeTime = 2.0f;
@@ -18,6 +21,11 @@ public class EnemyController : MonoBehaviour
     public ParticleSystem smokeEffect;
     private AudioSource audioSource;
 
+    [SerializeField]
+    private AudioClip fixedClip;
+
+    private MissionManager mM;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +33,8 @@ public class EnemyController : MonoBehaviour
         timer = changeTime;
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        hp = maxHp;
+        mM = FindObjectOfType<MissionManager>();
     }
 
     void Update()
@@ -78,15 +88,24 @@ public class EnemyController : MonoBehaviour
     }
 
     public void FixRobot(){
+        PlayAudio(fixedClip);
         isBroken = false;
         rigid_body.simulated = false;
         animator.SetTrigger("Fixed");
         smokeEffect.Stop();
         audioSource.Stop();
+        mM.ChangeRobotNum(-1);
     }
 
     public void PlayAudio(AudioClip audioClip){
         audioSource.PlayOneShot(audioClip);
+    }
+
+    public void ChangeHp(int value){
+        hp += value;
+        if(hp<=0){
+            FixRobot();
+        }
     }
 }
 

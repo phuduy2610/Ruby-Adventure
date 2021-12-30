@@ -72,14 +72,16 @@ public class RubyController : MonoBehaviour
                 isInvincible = false;
             }
         }
-        if (Input.GetKeyDown(KeyCode.C))
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Launch"))
         {
-            if (numberOfClog > 0)
+            if (Input.GetKeyDown(KeyCode.C))
             {
-                Launch();
+                if (numberOfClog > 0)
+                {
+                    Launch();
+                }
             }
         }
-
         if (Input.GetKeyDown(KeyCode.X))
         {
             RaycastHit2D hit = Physics2D.Raycast(rigid_body.position + Vector2.up * 0.2f, lookDirection, 1.5f, LayerMask.GetMask("NPC"));
