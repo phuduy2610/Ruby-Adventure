@@ -32,8 +32,8 @@ public class Projectile : MonoBehaviour
         rigid_body.AddForce(direction*force);
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
-        EnemyController enemyController = other.collider.GetComponent<EnemyController>();
+    private void OnTriggerEnter2D(Collider2D other) {
+        EnemyController enemyController = other.GetComponent<EnemyController>();
         if(enemyController!=null){
         enemyController.PlayAudio(hitClip);
         enemyController.FixRobot();

@@ -12,7 +12,7 @@ public class RubyController : MonoBehaviour
         set { _health = value; }
     }
 
-    public float timeInvincible = 2.0f;
+    public float timeInvincible = 0.5f;
     bool isInvincible;
     float invincibleTimer;
 

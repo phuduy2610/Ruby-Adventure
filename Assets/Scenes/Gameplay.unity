@@ -6115,6 +6115,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 626746581723031675, guid: 66a79ea255a37a246901075fdd8cc888, type: 3}
+      propertyPath: timeInvincible
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 626746581723031676, guid: 66a79ea255a37a246901075fdd8cc888, type: 3}
       propertyPath: m_Name
       value: Ruby
@@ -6333,6 +6337,10 @@ PrefabInstance:
     - target: {fileID: 5255700346321560157, guid: 024265d84b835a343a6991adde6cd354, type: 3}
       propertyPath: m_Name
       value: MrClockwork
+      objectReference: {fileID: 0}
+    - target: {fileID: 5255700346321560159, guid: 024265d84b835a343a6991adde6cd354, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 024265d84b835a343a6991adde6cd354, type: 3}
