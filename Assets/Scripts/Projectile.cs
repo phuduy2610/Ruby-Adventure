@@ -13,7 +13,7 @@ public class Projectile : MonoBehaviour
     {
         rigid_body = GetComponent<Rigidbody2D>();
         myRenderer = GetComponent<Renderer>();
-        
+
     }
 
     // Update is called once per frame
@@ -24,22 +24,26 @@ public class Projectile : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
+
     }
 
-    public void Launch(Vector2 direction, float force){
+    public void Launch(Vector2 direction, float force)
+    {
 
-        rigid_body.AddForce(direction*force);
+        rigid_body.AddForce(direction * force);
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        EnemyController enemyController = other.GetComponent<EnemyController>();
-        if(enemyController!=null){
-        enemyController.PlayAudio(hitClip);
-        enemyController.FixRobot();
-        enemyController.PlayAudio(fixedClip);
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Enemy")
+        {
+            EnemyController enemyController = other.GetComponent<EnemyController>();
+            enemyController.PlayAudio(hitClip);
+            enemyController.FixRobot();
+            enemyController.PlayAudio(fixedClip);
         }
         Destroy(gameObject);
+
     }
 
 

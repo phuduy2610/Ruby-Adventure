@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 public class RubyController : MonoBehaviour
 {
+    [SerializeField]
+    private int numberOfClog = 0;
     public int maxHealth = 5;
     public float speed = 10.0f;
     int _health;
@@ -31,9 +34,12 @@ public class RubyController : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip getHitClip;
     public AudioClip throwClip;
+    [SerializeField]
+    private TMP_Text bulletTxt;
     // Start is called before the first frame update
     void Start()
     {
+        bulletTxt.text = numberOfClog.ToString();
         rigid_body = GetComponent<Rigidbody2D>();
         _health = maxHealth;
         animator = GetComponent<Animator>();
@@ -68,7 +74,10 @@ public class RubyController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
-            Launch();
+            if (numberOfClog > 0)
+            {
+                Launch();
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.X))
@@ -127,10 +136,22 @@ public class RubyController : MonoBehaviour
         projectile.Launch(lookDirection, 300);
         animator.SetTrigger("Launch");
         PlayAudio(throwClip);
+        ChangeBullet(-1);
     }
 
     public void PlayAudio(AudioClip audioClip)
     {
         audioSource.PlayOneShot(audioClip);
+    }
+
+    public void ChangeBullet(int value)
+    {
+        if (value > 0)
+        {
+            Instantiate(pickHealthEffect, rigid_body.position + Vector2.up * 0.5f, Quaternion.identity);
+
+        }
+        numberOfClog += value;
+        bulletTxt.text = numberOfClog.ToString();
     }
 }
