@@ -145,3 +145,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fixedClip: {fileID: 8300000, guid: e7fa1971a86d60945bb64585c0ac14d5, type: 3}
+  hitClip: {fileID: 8300000, guid: 709a835b61b848644946696fdd5e5a4d, type: 3}

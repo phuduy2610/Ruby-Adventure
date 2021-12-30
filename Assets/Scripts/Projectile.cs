@@ -8,17 +8,20 @@ public class Projectile : MonoBehaviour
     Rigidbody2D rigid_body;
     public AudioClip fixedClip;
     public AudioClip hitClip;
+    private Renderer myRenderer;
     void Awake()
     {
         rigid_body = GetComponent<Rigidbody2D>();
-        
+        myRenderer = GetComponent<Renderer>();
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.magnitude > 1000){
+        Debug.Log(transform.position.magnitude);
+        if (transform.position.magnitude > 20)
+        {
             Destroy(gameObject);
         }
         
