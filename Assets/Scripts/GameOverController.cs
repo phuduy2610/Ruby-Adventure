@@ -46,6 +46,11 @@ public class GameOverController : MonoBehaviour
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
+            if(Input.GetKeyDown(KeyCode.Escape)){
+
+                SceneManager.LoadScene("Title");
+
+            }
         }
     }
 
