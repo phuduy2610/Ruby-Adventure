@@ -27,7 +27,6 @@ public class NPC : MonoBehaviour
 
     public void DisplayDialog (){
         timeDisplay = displayTime;
-        Debug.Log("Time display: "+timeDisplay);
         diablogBox.SetActive(true);
     }
 }

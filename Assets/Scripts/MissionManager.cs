@@ -8,6 +8,9 @@ public class MissionManager : MonoBehaviour
     private TMP_Text RobotTxt;
     private int robotCount;
     private GameObject[] robots;
+    bool isComplete = false;
+    public event System.Action OnMissionComplete;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +25,15 @@ public class MissionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (robotCount <= 0 && !isComplete)
+        {
+            if (OnMissionComplete != null)
+            {
+                isComplete = true;
+                OnMissionComplete();
+            }
 
+        }
     }
 
     public void ChangeRobotNum(int value)

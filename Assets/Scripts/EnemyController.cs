@@ -6,7 +6,7 @@ public class EnemyController : MonoBehaviour
 {
     [SerializeField]
     private int maxHp = 2;
-    public int hp{get;private set;}
+    public int hp { get; private set; }
     public float speed;
     public bool vertical;
     public float changeTime = 2.0f;
@@ -39,7 +39,8 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        if(!isBroken){
+        if (!isBroken)
+        {
             return;
         }
 
@@ -53,10 +54,11 @@ public class EnemyController : MonoBehaviour
 
 
     }
-    
+
     void FixedUpdate()
     {
-        if(!isBroken){
+        if (!isBroken)
+        {
             return;
         }
 
@@ -65,30 +67,32 @@ public class EnemyController : MonoBehaviour
         if (vertical)
         {
             position.y = position.y + Time.deltaTime * speed * direction;
-            animator.SetFloat("Move X",0);
-            animator.SetFloat("Move Y",direction);
+            animator.SetFloat("Move X", 0);
+            animator.SetFloat("Move Y", direction);
         }
         else
         {
             position.x = position.x + Time.deltaTime * speed * direction;
-            animator.SetFloat("Move X",direction);
-            animator.SetFloat("Move Y",0);
+            animator.SetFloat("Move X", direction);
+            animator.SetFloat("Move Y", 0);
         }
-        
+
 
 
         rigid_body.MovePosition(position);
     }
 
-     private void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerEnter2D(Collider2D other)
+    {
         RubyController rubyController = other.gameObject.GetComponent<RubyController>();
-        if(rubyController != null){
+        if (rubyController != null)
+        {
             rubyController.ChangeHealth(-1);
         }
     }
 
-    public void FixRobot(){
-        PlayAudio(fixedClip);
+    public void FixRobot()
+    {
         isBroken = false;
         rigid_body.simulated = false;
         animator.SetTrigger("Fixed");
@@ -97,13 +101,17 @@ public class EnemyController : MonoBehaviour
         mM.ChangeRobotNum(-1);
     }
 
-    public void PlayAudio(AudioClip audioClip){
+    public void PlayAudio(AudioClip audioClip)
+    {
         audioSource.PlayOneShot(audioClip);
     }
 
-    public void ChangeHp(int value){
+    public void ChangeHp(int value)
+    {
         hp += value;
-        if(hp<=0){
+        if (hp <= 0)
+        {
+            PlayAudio(fixedClip);
             FixRobot();
         }
     }

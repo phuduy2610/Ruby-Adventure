@@ -30,12 +30,15 @@ public class RubyController : MonoBehaviour
 
     public ParticleSystem getHitEffect;
     public ParticleSystem pickHealthEffect;
-
+    public ParticleSystem DeathEffect;
     private AudioSource audioSource;
     public AudioClip getHitClip;
     public AudioClip throwClip;
     [SerializeField]
     private TMP_Text bulletTxt;
+
+    public event System.Action OnPlayerDeath;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,12 +47,15 @@ public class RubyController : MonoBehaviour
         _health = maxHealth;
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
-        Debug.Log(_health);
     }
 
     // Update is called once per frame
     private void Update()
     {
+        if (_health <= 0)
+        {
+            PlayerDeath();
+        }
 
         vertical = Input.GetAxis("Vertical");
         horizontal = Input.GetAxis("Horizontal"); // Lấy input  trái phải
@@ -127,7 +133,6 @@ public class RubyController : MonoBehaviour
             Instantiate(pickHealthEffect, rigid_body.position + Vector2.up * 0.5f, Quaternion.identity);
         }
         _health = Mathf.Clamp(_health + amount, 0, maxHealth);
-        Debug.Log(_health);
         UIHealthBar.instance.SetValue(_health / (float)maxHealth);
     }
 
@@ -155,5 +160,15 @@ public class RubyController : MonoBehaviour
         }
         numberOfClog += value;
         bulletTxt.text = numberOfClog.ToString();
+    }
+
+    private void PlayerDeath()
+    {
+        Instantiate(DeathEffect, rigid_body.position + Vector2.up * 0.5f, Quaternion.identity);
+        gameObject.SetActive(false);
+        if (OnPlayerDeath != null)
+        {
+            OnPlayerDeath();
+        }
     }
 }

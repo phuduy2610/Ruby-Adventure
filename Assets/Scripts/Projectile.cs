@@ -18,7 +18,6 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(transform.position.magnitude);
         if (transform.position.magnitude > 20)
         {
             Destroy(gameObject);
@@ -41,8 +40,9 @@ public class Projectile : MonoBehaviour
             enemyController.ChangeHp(-1);
 
         }
-        else if(other.tag =="Collectible"){
-           return; 
+        else if (other.tag == "Collectible")
+        {
+            return;
         }
         Destroy(gameObject);
 
