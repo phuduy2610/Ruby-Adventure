@@ -20,8 +20,7 @@ public class RubyController : MonoBehaviour
     float invincibleTimer;
 
     Rigidbody2D rigid_body;
-    float horizontal;
-    float vertical;
+
 
     Animator animator;
     Vector2 lookDirection = new Vector2(1, 0);
@@ -37,6 +36,8 @@ public class RubyController : MonoBehaviour
     [SerializeField]
     private TMP_Text bulletTxt;
 
+    private RubyControl rubyControl;
+
     public event System.Action OnPlayerDeath;
 
     // Start is called before the first frame update
@@ -49,6 +50,21 @@ public class RubyController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    private void Awake()
+    {
+        rubyControl = new RubyControl();
+
+    }
+    private void OnEnable()
+    {
+        rubyControl.Enable();
+    }
+
+    private void OnDisable()
+    {
+        rubyControl.Disable();
+    }
+
     // Update is called once per frame
     private void Update()
     {
@@ -57,10 +73,7 @@ public class RubyController : MonoBehaviour
             PlayerDeath();
         }
 
-        vertical = Input.GetAxis("Vertical");
-        horizontal = Input.GetAxis("Horizontal"); // Lấy input  trái phải
-
-        Vector2 move = new Vector2(horizontal, vertical);
+        Vector2 move = rubyControl.Player.Move.ReadValue<Vector2>();
         if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
         {
             lookDirection.Set(move.x, move.y);
@@ -80,7 +93,7 @@ public class RubyController : MonoBehaviour
         }
         if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Launch"))
         {
-            if (Input.GetKeyDown(KeyCode.C))
+            if (rubyControl.Player.Fire.triggered)
             {
                 if (numberOfClog > 0)
                 {
@@ -88,7 +101,7 @@ public class RubyController : MonoBehaviour
                 }
             }
         }
-        if (Input.GetKeyDown(KeyCode.X))
+        if (rubyControl.Player.Talk.triggered)
         {
             RaycastHit2D hit = Physics2D.Raycast(rigid_body.position + Vector2.up * 0.2f, lookDirection, 1.5f, LayerMask.GetMask("NPC"));
             if (hit.collider != null)
@@ -107,8 +120,8 @@ public class RubyController : MonoBehaviour
         if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Launch"))
         {
             Vector2 position = rigid_body.position;
-            position.x += speed * horizontal * Time.deltaTime;
-            position.y += speed * vertical * Time.deltaTime;
+            position.x += speed * rubyControl.Player.Move.ReadValue<Vector2>().x * Time.deltaTime;
+            position.y += speed * rubyControl.Player.Move.ReadValue<Vector2>().y * Time.deltaTime;
             rigid_body.MovePosition(position);
         }
     }

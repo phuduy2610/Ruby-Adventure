@@ -6,6 +6,8 @@ public class TitleController : MonoBehaviour
 {
     [SerializeField]
     GameObject startTxt;
+    [SerializeField]
+    GameObject menu;
     bool blinking = true;
     // Start is called before the first frame update
     void Start()
@@ -18,7 +20,7 @@ public class TitleController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space)){
             blinking = false;
-            SceneManager.LoadScene("Gameplay");
+            menu.SetActive(true);
         }
     }
 
@@ -36,5 +38,13 @@ public class TitleController : MonoBehaviour
             }
             yield return new WaitForSeconds(0.5f);
         }
+    }
+
+    public void StartGame(){
+        SceneManager.LoadScene("Gameplay");
+    }
+
+    public void ExitGame(){
+        Application.Quit();
     }
 }
