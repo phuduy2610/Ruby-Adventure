@@ -40,6 +40,7 @@
      <Compile Include="Assets\Scripts\TitleController.cs" />
      <Compile Include="Assets\Scripts\UIHealthBar.cs" />
      <Compile Include="Assets\Scripts\RubyController.cs" />
+     <Compile Include="Assets\InputAction\RubyControl.cs" />
      <Compile Include="Assets\Scripts\Damageable.cs" />
      <Compile Include="Assets\Scripts\GameOverController.cs" />
      <Compile Include="Assets\Scripts\HealthCollectible.cs" />
@@ -47,7 +48,7 @@
      <Compile Include="Assets\Scripts\NPC.cs" />
      <Compile Include="Assets\Scripts\BulletCollectible.cs" />
      <Compile Include="Assets\Scripts\EnemyController.cs" />
-     <Compile Include="Assets\InputAction\RubyControl.cs" />
+     <Compile Include="Assets\Scripts\PauseGame.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\2DBeginner_Third-PartyNotice.txt" />
@@ -688,11 +689,14 @@
     <Reference Include="UnityEditor.UI">
         <HintPath>D:\Unity Project\Learning-Unity\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.PlasticSCM.Editor">
-        <HintPath>D:\Unity Project\Learning-Unity\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
+    <Reference Include="Unity.InputSystem">
+        <HintPath>D:\Unity Project\Learning-Unity\Library\ScriptAssemblies\Unity.InputSystem.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
         <HintPath>D:\Unity Project\Learning-Unity\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.PlasticSCM.Editor">
+        <HintPath>D:\Unity Project\Learning-Unity\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
         <HintPath>D:\Unity Project\Learning-Unity\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
@@ -735,9 +739,6 @@
     </Reference>
     <Reference Include="Unity.2D.SpriteShape.Runtime">
         <HintPath>D:\Unity Project\Learning-Unity\Library\ScriptAssemblies\Unity.2D.SpriteShape.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.InputSystem">
-        <HintPath>D:\Unity Project\Learning-Unity\Library\ScriptAssemblies\Unity.InputSystem.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
