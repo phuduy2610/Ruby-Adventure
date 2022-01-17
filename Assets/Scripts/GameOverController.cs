@@ -6,8 +6,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 public class GameOverController : MonoBehaviour
 {
-    bool isDead = false;
-    bool isWin = false;
+
     [SerializeField]
     private GameObject gameOverScene;
 
@@ -39,24 +38,19 @@ public class GameOverController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Check Space để chơi lại
-        if (isDead || isWin)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            }
-            if(Input.GetKeyDown(KeyCode.Escape)){
 
-                SceneManager.LoadScene("Title");
+    }
 
-            }
-        }
+    public void RestartGame(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void MainMenu(){
+        SceneManager.LoadScene("Title");
     }
 
     private void OnGameOver()
     {
-        isDead = true;
         //Bật GameOver lên
         gameOverScene.SetActive(true);
         bgAudioSource.Stop();
@@ -64,10 +58,9 @@ public class GameOverController : MonoBehaviour
     }
 
     private void OnGameWin(){
-        isWin = true;
         gameVictoryScene.SetActive(true);
         bgAudioSource.Stop();
         bgAudioSource.PlayOneShot(gameVictorySound);
-        TimeTxt.text = Mathf.RoundToInt(Time.timeSinceLevelLoad) + "s";
+        TimeTxt.text = "Time: " + Mathf.RoundToInt(Time.timeSinceLevelLoad) + "s";
     } 
 }
