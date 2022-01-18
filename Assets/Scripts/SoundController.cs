@@ -2,8 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 public class SoundController : MonoBehaviour
 {
+    const float minVolumn = -80;
+    float currentVolumn;
+    [SerializeField]
+    private AudioMixer audioMixer;
     [SerializeField]
     GameObject soundButton;
     [SerializeField]
@@ -29,13 +34,16 @@ public class SoundController : MonoBehaviour
     {
         if (isOn)
         {
+            audioMixer.GetFloat("MasterVolumn",out currentVolumn);
             soundButton.GetComponent<Image>().sprite = soundOff;
             isOn = false;
+            audioMixer.SetFloat("MasterVolumn",minVolumn);
         }
         else
         {
             soundButton.GetComponent<Image>().sprite = soundOn;
             isOn = true;
+            audioMixer.SetFloat("MasterVolumn",currentVolumn);
         }
     }
 }

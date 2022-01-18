@@ -99,15 +99,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ab1f880d3480841bd6096f71c7d522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberOfClog: 0
   maxHealth: 5
   speed: 6
   timeInvincible: 2
   projectilePrefab: {fileID: 2139717630259604212, guid: e6cdd5e45994428459b3a1abc600da4c, type: 3}
   getHitEffect: {fileID: 2404540215338771794, guid: 8624469a0c437e74c8fd5ebf61615362, type: 3}
   pickHealthEffect: {fileID: 929360960937569150, guid: 1ebce0fcc0148f24ba31fce1e03230a5, type: 3}
+  DeathEffect: {fileID: 0}
   getHitClip: {fileID: 8300000, guid: 9b1bb1f450b7d444fa4a8019d13519a7, type: 3}
   throwClip: {fileID: 8300000, guid: b2edfd40873655249ba0e01a5cf705be, type: 3}
-  footstepClip: {fileID: 8300000, guid: a20c77ecd5de9eb4a98731b45ad84c3e, type: 3}
+  bulletTxt: {fileID: 0}
 --- !u!50 &6167354810494091295
 Rigidbody2D:
   serializedVersion: 4
@@ -183,7 +185,7 @@ AudioSource:
   m_GameObject: {fileID: 626746581723031676}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 5540625754466898446, guid: 6978bd8eba9acbd4f9d3c91ad5429fcc, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
