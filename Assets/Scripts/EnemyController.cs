@@ -15,7 +15,7 @@ public class EnemyController : MonoBehaviour
     float timer;
     int direction = 1;
 
-    bool isBroken = true;
+    public bool isBroken = true;
     Animator animator;
 
     public ParticleSystem smokeEffect;

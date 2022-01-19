@@ -10,7 +10,7 @@ public class BulletCollectible : MonoBehaviour
         if(controller != null){
             controller.ChangeBullet(5);
             controller.PlayAudio(collectedClip);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

@@ -5,7 +5,12 @@ using TMPro;
 public class RubyController : MonoBehaviour
 {
     [SerializeField]
-    private int numberOfClog = 0;
+    private int numberOfClog;
+    public int NumberOfClog
+    {
+        get { return numberOfClog; }
+        set { numberOfClog = value; }
+    }
     public int maxHealth = 5;
     public float speed = 10.0f;
     int _health;
@@ -43,9 +48,29 @@ public class RubyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        UIHealthBar.instance.MaxSize();
+
+        if (TitleController.instance.btnChoice == "Load")
+        {
+            LoadGame loadGame = FindObjectOfType<LoadGame>();
+            SaveData rubyData = loadGame.Load();
+            if (rubyData != null)
+            {
+                transform.position = new Vector2(rubyData._currentPositionX, rubyData._currentPositionY);
+                numberOfClog = rubyData._bulletAmount;
+                _health = rubyData._health;
+                UIHealthBar.instance.SetValue(_health / (float)maxHealth);
+            }
+
+        }
+        else
+        {
+            numberOfClog = 0;
+            _health = maxHealth;
+        }
         bulletTxt.text = numberOfClog.ToString();
         rigid_body = GetComponent<Rigidbody2D>();
-        _health = maxHealth;
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
     }

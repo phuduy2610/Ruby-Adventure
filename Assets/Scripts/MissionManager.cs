@@ -6,20 +6,49 @@ public class MissionManager : MonoBehaviour
 {
     [SerializeField]
     private TMP_Text RobotTxt;
-    private int robotCount;
-    private GameObject[] robots;
+    public int robotCount;
+    public GameObject[] robots;
+    public GameObject[] items;
     bool isComplete = false;
     public event System.Action OnMissionComplete;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (robots == null)
+
+        robots = GameObject.FindGameObjectsWithTag("Enemy");
+        items = GameObject.FindGameObjectsWithTag("Collectible");
+        if (TitleController.instance.btnChoice == "Load")
         {
-            robots = GameObject.FindGameObjectsWithTag("Enemy");
-            robotCount = robots.Length;
-            RobotTxt.text = robotCount.ToString();
+            LoadGame loadGame = FindObjectOfType<LoadGame>();
+            SaveData missionData = loadGame.Load();
+            if (missionData != null)
+            {
+                robotCount = missionData._robotCount;
+                for (int i = 0; i < missionData.robotState.Length; i++)
+                {
+                    if (!missionData.robotState[i])
+                    {
+                        EnemyController enemyController = robots[i].GetComponent<EnemyController>();
+                        enemyController.FixRobot();
+                    }
+                }
+                for (int i = 0; i < items.Length; i++)
+                {
+                    if (!missionData.itemState[i])
+                    {
+                        items[i].SetActive(false);
+                    }
+                }
+            }
         }
+        else
+        {
+            robotCount = robots.Length;
+        }
+
+        RobotTxt.text = robotCount.ToString();
+
     }
 
     // Update is called once per frame
@@ -38,7 +67,7 @@ public class MissionManager : MonoBehaviour
 
     public void ChangeRobotNum(int value)
     {
-        robotCount--;
+        robotCount += value;
         RobotTxt.text = robotCount.ToString();
 
     }

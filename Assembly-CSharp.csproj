@@ -36,6 +36,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\GraphicController.cs" />
      <Compile Include="Assets\Scripts\Projectile.cs" />
      <Compile Include="Assets\Scripts\SoundOptionMenuController.cs" />
      <Compile Include="Assets\Scripts\TitleController.cs" />
@@ -51,7 +52,9 @@
      <Compile Include="Assets\Scripts\BulletCollectible.cs" />
      <Compile Include="Assets\Scripts\EnemyController.cs" />
      <Compile Include="Assets\Scripts\SoundController.cs" />
-     <Compile Include="Assets\Scripts\GraphicController.cs" />
+     <Compile Include="Assets\Scripts\LoadingController.cs" />
+     <Compile Include="Assets\Scripts\SaveData.cs" />
+     <Compile Include="Assets\Scripts\LoadGame.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\2DBeginner_Third-PartyNotice.txt" />
