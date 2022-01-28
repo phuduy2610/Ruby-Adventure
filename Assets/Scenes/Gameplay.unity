@@ -5741,6 +5741,7 @@ MonoBehaviour:
   RobotTxt: {fileID: 1521913641}
   robotCount: 0
   robots: []
+  items: []
 --- !u!1 &427065831
 GameObject:
   m_ObjectHideFlags: 0
@@ -7289,6 +7290,7 @@ MonoBehaviour:
   RobotTxt: {fileID: 1521913641}
   robotCount: 0
   robots: []
+  items: []
 --- !u!4 &563024657
 Transform:
   m_ObjectHideFlags: 0

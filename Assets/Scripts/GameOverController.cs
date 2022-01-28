@@ -42,6 +42,7 @@ public class GameOverController : MonoBehaviour
     }
 
     public void RestartGame(){
+        TitleController.instance.btnChoice = "Play";
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

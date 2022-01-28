@@ -30,7 +30,7 @@ public class MissionManager : MonoBehaviour
                     if (!missionData.robotState[i])
                     {
                         EnemyController enemyController = robots[i].GetComponent<EnemyController>();
-                        enemyController.FixRobot();
+                        enemyController.FixRobotOnly();
                     }
                 }
                 for (int i = 0; i < items.Length; i++)
@@ -65,10 +65,9 @@ public class MissionManager : MonoBehaviour
         }
     }
 
-    public void ChangeRobotNum(int value)
+    public void ChangeRobotNum()
     {
-        robotCount += value;
+        robotCount--;
         RobotTxt.text = robotCount.ToString();
-
     }
 }

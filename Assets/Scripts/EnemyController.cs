@@ -98,8 +98,18 @@ public class EnemyController : MonoBehaviour
         animator.SetTrigger("Fixed");
         smokeEffect.Stop();
         audioSource.Stop();
-        mM.ChangeRobotNum(-1);
+        mM.ChangeRobotNum();
     }
+
+    public void FixRobotOnly()
+    {
+        isBroken = false;
+        rigid_body.simulated = false;
+        animator.SetTrigger("Fixed");
+        smokeEffect.Stop();
+        audioSource.Stop();
+    }
+
 
     public void PlayAudio(AudioClip audioClip)
     {
